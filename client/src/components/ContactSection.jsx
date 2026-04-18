@@ -5,17 +5,31 @@ import {
   MapPin,
   Phone,
   Send,
-  Twitter,
   Github,
-  Loader2
+  Loader2,
+  Youtube
 } from "lucide-react";
+
+const LeetCodeIcon = ({ className }) => (
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} fill="currentColor">
+    <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835s.513 2.853 1.494 3.835l4.332 4.363c.981.981 2.336 1.494 3.835 1.494s2.853-.513 3.835-1.494l2.697-2.607c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"/>
+  </svg>
+);
+
+const TwitterIcon = ({ className }) => (
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} fill="currentColor">
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+  </svg>
+);
 import { cn } from "@/lib/utils";
 import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import emailjs from '@emailjs/browser';
 
 export const ContactSection = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const form = useRef();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -72,31 +86,33 @@ export const ContactSection = () => {
     setIsSubmitting(true);
     
     try {
-      const response = await fetch('https://formspree.io/f/xwpbojaj', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      await emailjs.send(
+        "service_5kpwy4w",
+        "template_bms5hqn",
+        {
+          title: "Contact Form Submission",
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
         },
-        body: JSON.stringify(formData),
-      });
+        "8xS7Is-LTWqtE-yWy" // Replace with your actual public key
+      );
 
-      if (response.ok) {
-        toast({
-          title: "Message sent! 🎉",
-          description: "I'll get back to you within 24 hours.",
-          variant: "success",
-          className: "bg-green-600 text-white dark:bg-green-500 border border-green-700 shadow-lg"
-        });
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
       toast({
-        title: "Oops! Something went wrong",
-        description: "Please try again or email me directly at codewithkinu@gmail.com",
+        title: "Message Sent Successfully",
+        variant: "success",
+        className: "bg-green-600 text-white dark:bg-green-500 border border-green-700 shadow-lg"
+      });
+      alert("Message Sent Successfully");
+      setFormData({ name: '', email: '', message: '' });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        title: "Failed to send message",
+        description: error?.text || error?.message || String(error),
         variant: "destructive"
       });
+      alert(`Failed to send message: ${error?.text || error?.message || 'Check console for details'}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -107,7 +123,7 @@ export const ContactSection = () => {
       <div className="container mx-auto max-w-6xl">
         <div className="text-center mb-12 sm:mb-16">
           <span className="inline-block px-3 py-1 text-xs sm:text-sm font-medium rounded-full bg-primary/10 text-primary mb-3 sm:mb-4">
-            Let's Connect
+            Let&apos;s Connect
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-purple-600">
             Get In Touch
@@ -133,10 +149,10 @@ export const ContactSection = () => {
                 <div>
                   <p className="text-xs sm:text-sm text-muted-foreground">Email</p>
                   <a
-                    href="mailto:codewithkinu@gmail.com"
+                    href="mailto:dharmi.patel.cg@gmail.com"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
-                    codewithkinu@gmail.com
+                    dharmi.patel.cg@gmail.com
                   </a>
                 </div>
               </div>
@@ -148,10 +164,10 @@ export const ContactSection = () => {
                 <div>
                   <p className="text-xs sm:text-sm text-muted-foreground">Phone</p>
                   <a
-                    href="tel:+919315145594"
+                    href="tel:+919104187840"
                     className="text-sm sm:text-base font-medium hover:text-primary transition-colors"
                   >
-                    +91 9315145594
+                    +91 9104187840
                   </a>
                 </div>
               </div>
@@ -163,7 +179,7 @@ export const ContactSection = () => {
                 <div>
                   <p className="text-xs sm:text-sm text-muted-foreground">Location</p>
                   <span className="text-sm sm:text-base font-medium">
-                    Bengaluru, Karnataka India
+                    Ahmedabad, Gujarat India
                   </span>
                 </div>
               </div>
@@ -173,26 +189,11 @@ export const ContactSection = () => {
               <h4 className="font-medium mb-3 sm:mb-4 text-xs sm:text-sm text-muted-foreground">Find me on</h4>
               <div className="flex gap-2 sm:gap-3">
                 {[
-                  {
-                    icon: Linkedin,
-                    label: "LinkedIn",
-                    url: "https://www.linkedin.com/in/codewithkinu",
-                  },
-                  {
-                    icon: Twitter,
-                    label: "Twitter",
-                    url: "#",
-                  },
-                  {
-                    icon: Github,
-                    label: "GitHub",
-                    url: "https://github.com/Sahilmd01",
-                  },
-                  {
-                    icon: Instagram,
-                    label: "Instagram",
-                    url: "https://www.instagram.com/dubbinut",
-                  },
+                  { icon: Linkedin, url: "https://www.linkedin.com/in/dharmi-patel-b565322a1/", label: "LinkedIn" },
+                  { icon: Youtube, url: "https://www.youtube.com/@DharmiPatel-x5l", label: "YouTube" },
+                  { icon: Github, url: "https://github.com/Dharmi-456-design", label: "GitHub" },
+                  { icon: TwitterIcon, url: "https://x.com/PATEL_DHARMI225", label: "Twitter" },
+                  { icon: LeetCodeIcon, url: "https://leetcode.com/u/3mprZRXZPe/", label: "LeetCode" }
                 ].map((social, index) => (
                   <a
                     key={index}
@@ -216,11 +217,11 @@ export const ContactSection = () => {
               Send Me a Message
             </h3>
 
-            <form className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
-              <div className="space-y-1">
+            <form ref={form} className="space-y-4 sm:space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-1 text-left">
                 <label
                   htmlFor="name"
-                  className="text-xs sm:text-sm font-medium text-muted-foreground"
+                  className="text-xs sm:text-sm font-medium text-muted-foreground block text-left"
                 >
                   Your Name
                 </label>
@@ -236,10 +237,10 @@ export const ContactSection = () => {
                 />
               </div>
 
-              <div className="space-y-1">
+              <div className="space-y-1 text-left">
                 <label
                   htmlFor="email"
-                  className="text-xs sm:text-sm font-medium text-muted-foreground"
+                  className="text-xs sm:text-sm font-medium text-muted-foreground block text-left"
                 >
                   Your Email
                 </label>
@@ -255,10 +256,10 @@ export const ContactSection = () => {
                 />
               </div>
 
-              <div className="space-y-1">
+              <div className="space-y-1 text-left">
                 <label
                   htmlFor="message"
-                  className="text-xs sm:text-sm font-medium text-muted-foreground"
+                  className="text-xs sm:text-sm font-medium text-muted-foreground block text-left"
                 >
                   Your Message
                 </label>
@@ -270,7 +271,7 @@ export const ContactSection = () => {
                   required
                   rows={4}
                   className="w-full px-3 sm:px-4 py-2 sm:py-3 rounded-lg sm:rounded-xl border border-input bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent transition-all resize-none text-sm sm:text-base"
-                  placeholder="Hey, I'd love to collaborate on..."
+                  placeholder="Hey, I&apos;d love to collaborate on..."
                 />
               </div>
 

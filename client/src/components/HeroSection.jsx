@@ -1,36 +1,43 @@
-import { ArrowDown, MousePointerClick, Sparkles, Code, Palette, Rocket, Award, Download, Calendar, Shield, Zap, Users, TrendingUp, Briefcase, Mail } from "lucide-react";
+import { ArrowDown, MousePointerClick, Sparkles, Code, Palette, Rocket, Award, Download, Calendar, Shield, Zap, Users, TrendingUp, Briefcase, Mail, Github, Linkedin, Youtube, VolumeX } from "lucide-react";
+
+const LeetCodeIcon = ({ className }) => (
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} fill="currentColor">
+    <path d="M16.102 17.93l-2.697 2.607c-.466.467-1.111.662-1.823.662s-1.357-.195-1.824-.662l-4.332-4.363c-.467-.467-.702-1.15-.702-1.863s.235-1.357.702-1.824l4.319-4.38c.467-.467 1.125-.645 1.837-.645s1.357.195 1.823.662l2.697 2.606c.514.515 1.365.497 1.9-.038.535-.536.553-1.387.039-1.901l-2.609-2.636a5.055 5.055 0 0 0-2.445-1.337l2.467-2.503c.516-.514.498-1.366-.037-1.901-.535-.535-1.387-.552-1.902-.038l-10.1 10.101c-.981.982-1.494 2.337-1.494 3.835s.513 2.853 1.494 3.835l4.332 4.363c.981.981 2.336 1.494 3.835 1.494s2.853-.513 3.835-1.494l2.697-2.607c.514-.514.496-1.365-.039-1.9s-1.386-.553-1.899-.039zM20.811 13.01H10.666c-.702 0-1.27.604-1.27 1.346s.568 1.346 1.27 1.346h10.145c.701 0 1.27-.604 1.27-1.346s-.569-1.346-1.27-1.346z"/>
+  </svg>
+);
+
+const TwitterIcon = ({ className }) => (
+  <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={className} fill="currentColor">
+    <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/>
+  </svg>
+);
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+
+const codeSnippets = [
+  "import { FullStackDeveloper } from 'dharmi.dev';",
+  "",
+  "const developer = new FullStackDeveloper({",
+  "  name: 'DHARMI PATEL',",
+  "  stack: ['React', 'Next.js', 'Node.js', 'TypeScript'],",
+  "  focus: 'Building scalable web applications',",
+  "  status: 'Open to new opportunities'",
+  "});",
+  "",
+  "await developer.launchPortfolio();",
+  "// Featured: E-commerce, SaaS, Enterprise, Startup MVPs",
+  "",
+  "developer.connect();",
+  "console.log('🚀 Let\\'s build something exceptional together!');"
+];
+
+const GITHUB_PHOTO = "https://avatars.githubusercontent.com/u/226024353?v=4";
 
 export const HeroSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [currentCodeLine, setCurrentCodeLine] = useState(0);
   const [displayedCode, setDisplayedCode] = useState("");
-
-  const codeSnippets = [
-    "import { FullStackDeveloper } from 'sahil.dev';",
-    "",
-    "const developer = new FullStackDeveloper({",
-    "  name: 'Sahil',",
-    "  stack: ['React', 'Next.js', 'Node.js', 'TypeScript'],",
-    "  focus: 'Building scalable web applications',",
-    "  status: 'Open to new opportunities'",
-    "});",
-    "",
-    "await developer.launchPortfolio();",
-    "// Featured: E-commerce, SaaS, Enterprise, Startup MVPs",
-    "",
-    "developer.connect();",
-    "console.log('🚀 Let's build something exceptional together!');"
-  ];
-
-  const achievements = [
-    { number: "1+", label: "Years in Production", icon: <Shield className="h-3 w-3" /> },
-    { number: "15+", label: "Projects Delivered", icon: <TrendingUp className="h-3 w-3" /> },
-    { number: "100%", label: "Client Satisfaction", icon: <Award className="h-3 w-3" /> },
-    { number: "15+", label: "Projects completed", icon: <Zap className="h-3 w-3" /> }
-  ];
 
   useEffect(() => {
     const currentLine = codeSnippets[currentCodeLine];
@@ -55,8 +62,16 @@ export const HeroSection = () => {
 
   const handleViewResume = () => {
     // Open resume in new tab
-    window.open('/Sahil-resume.pdf', '_blank', 'noopener,noreferrer');
+    window.open('/Dharmi-resume.pdf', '_blank', 'noopener,noreferrer');
   };
+
+  const socialLinks = [
+    { icon: LeetCodeIcon, url: "https://leetcode.com/u/3mprZRXZPe/", color: "text-orange-500 border-orange-500/30 hover:bg-orange-500/10" },
+    { icon: Github, url: "https://github.com/Dharmi-456-design", color: "text-foreground border-border hover:bg-accent" },
+    { icon: Linkedin, url: "https://www.linkedin.com/in/dharmi-patel-b565322a1/", color: "text-blue-500 border-blue-500/30 hover:bg-blue-500/10" },
+    { icon: TwitterIcon, url: "https://x.com/PATEL_DHARMI225", color: "text-sky-500 border-sky-500/30 hover:bg-sky-500/10" },
+    { icon: Youtube, url: "https://www.youtube.com/@DharmiPatel-x5l", color: "text-red-500 border-red-500/30 hover:bg-red-500/10" },
+  ];
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-background via-background/95 to-primary/10" ref={ref}>
@@ -99,54 +114,56 @@ export const HeroSection = () => {
         <motion.div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-20" initial="hidden" animate={isInView ? "visible" : "hidden"} variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.25, delayChildren: 0.5 } } }}>
           
           <div className="flex-1 text-center lg:text-left max-w-2xl mx-auto lg:mx-0">
-            <motion.div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-8 backdrop-blur-sm" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
-              <Briefcase className="h-4 w-4" /> Currently Accepting new Opportunities
+            <motion.div
+              className="mb-8 flex justify-center lg:justify-start"
+              variants={{ hidden: { y: 20, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}
+            >
+              <div className="relative w-36 h-36 rounded-full p-1.5 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 shadow-2xl shadow-primary/25">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-background bg-muted">
+                  <img src={GITHUB_PHOTO} alt="Dharmi Patel" className="w-full h-full object-cover" />
+                </div>
+              </div>
             </motion.div>
 
-            <motion.h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
-              <span className="block text-foreground">I'm Sahil</span>
+            <motion.h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
+              <span className="block text-foreground">I&apos;m DHARMI PATEL</span>
               <motion.span className="block bg-gradient-to-r from-primary via-purple-600 to-pink-600 bg-clip-text text-transparent mt-2" animate={{ backgroundPosition: ['0%', '100%', '0%'] }} transition={{ duration: 8, repeat: Infinity }} style={{ backgroundSize: '200% 100%' }}>
-                Full-Stack Engineer
+                Full-Stack Developer
               </motion.span>
             </motion.h1>
 
-            <motion.p className="text-lg sm:text-xl text-muted-foreground mt-6 leading-relaxed max-w-2xl" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
+            <motion.p className="text-base sm:text-lg text-muted-foreground mt-6 leading-relaxed max-w-2xl" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
               I build <span className="text-primary font-semibold">high-performance web applications</span> that drive business growth. Specializing in React, Node.js, and scalable architecture for startups and enterprises.
             </motion.p>
 
-            <motion.div className="grid grid-cols-2 sm:grid-cols-4 gap-4 my-8" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
-              {achievements.map((achievement, index) => (
-                <div key={index} className="text-center p-4 rounded-xl bg-background/60 border border-border/50 backdrop-blur-sm hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-center justify-center gap-2 mb-2">
-                    {achievement.icon}
-                    <div className="text-2xl font-bold text-foreground">{achievement.number}</div>
-                  </div>
-                  <div className="text-xs text-muted-foreground">{achievement.label}</div>
-                </div>
+            <motion.div className="flex justify-center lg:justify-start gap-3 mt-6" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
+              {socialLinks.map((social, index) => (
+                <motion.a
+                  key={index}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`p-3 rounded-full border bg-background/70 backdrop-blur-sm transition-all duration-300 shadow-sm ${social.color}`}
+                >
+                  <social.icon className="h-5 w-5" />
+                </motion.a>
               ))}
             </motion.div>
 
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mt-10" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
               <motion.a href="#projects" className="group relative overflow-hidden px-8 py-4 rounded-xl font-semibold bg-gradient-to-r from-primary to-purple-600 text-primary-foreground shadow-lg hover:shadow-xl text-sm flex items-center justify-center gap-3" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Code className="h-5 w-5" /> 
-                <span>View Case Studies</span>
+                <span>View My Work</span>
                 <TrendingUp className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </motion.a>
               
               <motion.a href="#contact" className="group relative overflow-hidden px-8 py-4 rounded-xl font-semibold border border-primary/50 text-foreground hover:border-primary transition-all duration-300 bg-background/80 backdrop-blur-sm text-sm flex items-center justify-center gap-3" whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Mail className="h-4 w-4" /> 
-                <span>Technical Interview</span>
+                <span>Let&apos;s Connect</span>
               </motion.a>
               
-              <motion.button 
-                onClick={handleViewResume}
-                className="group relative overflow-hidden px-6 py-4 rounded-xl font-semibold border border-border text-muted-foreground hover:border-primary/30 transition-all duration-300 bg-background/60 backdrop-blur-sm text-sm flex items-center justify-center gap-2" 
-                whileHover={{ scale: 1.05, y: -2 }} 
-                whileTap={{ scale: 0.95 }}
-              >
-                <Download className="h-4 w-4" /> 
-                <span>View Resume</span>
-              </motion.button>
             </motion.div>
 
             <motion.div className="mt-6 text-center lg:text-left" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
@@ -158,6 +175,8 @@ export const HeroSection = () => {
 
           <motion.div className="flex-1 flex justify-center lg:justify-end w-full" variants={{ hidden: { y: 30, opacity: 0 }, visible: { y: 0, opacity: 1, transition: { duration: 0.8 } } }}>
             <div className="relative w-full max-w-md">
+
+
               <motion.div className="bg-background/90 border border-border rounded-2xl p-8 backdrop-blur-sm shadow-2xl w-full group hover:shadow-3xl transition-all duration-500" whileHover={{ y: -4 }} transition={{ type: "spring", stiffness: 400, damping: 25 }}>
                 
                 <div className="flex items-center gap-4 mb-6">
@@ -227,6 +246,7 @@ export const HeroSection = () => {
                   <div className="text-sm font-bold text-foreground">Modern Tech</div>
                 </motion.div>
               </motion.div>
+
             </div>
           </motion.div>
         </motion.div>

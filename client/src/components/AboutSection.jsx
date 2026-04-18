@@ -1,265 +1,256 @@
-import React, { useState, useEffect } from 'react';
-import { Briefcase, Code, User, Download, Calendar, Sparkles, Target, Github, Linkedin, Twitter, Mail, Star } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { Briefcase, Code, Download, Calendar, Sparkles, Target, User, Github, Linkedin, Twitter, Youtube, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
+
+const GITHUB_PHOTO = 'https://avatars.githubusercontent.com/u/226024353?v=4';
+
+// const stats = [
+//   { number: 15, suffix: '+', label: 'Projects', icon: Briefcase },
+//   { number: 1,  suffix: '+', label: 'Years Exp', icon: Calendar },
+//   { number: 99, suffix: '%', label: 'Success Rate', icon: Target },
+//   { number: 10, suffix: '+', label: 'Happy Clients', icon: User },
+// ];
+
+const skills = ['React', 'JavaScript', 'HTML/CSS', 'Tailwind CSS', 'Node.js', 'Git & GitHub', 'Figma', 'Vite'];
+
+const socialLinks = [
+  { Icon: Github,   href: 'https://github.com/Dharmi-456-design',                     label: 'GitHub' },
+  { Icon: Linkedin, href: 'https://www.linkedin.com/in/dharmi-patel-b565322a1/',       label: 'LinkedIn' },
+  { Icon: Twitter,  href: 'https://x.com/PATEL_DHARMI225',                             label: 'Twitter' },
+  { Icon: Youtube,  href: 'https://www.youtube.com/@DharmiPatel-x5l',                  label: 'YouTube' },
+  // {Icon: Leetcode, href: 'https://leetcode.com/u/3mprZRXZPe/', label: 'Leetcode'}
+];
+
+/* Animated counter hook */
+function useCounter(target, inView) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const duration = 1500;
+    const step = Math.ceil(target / (duration / 16));
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(start);
+    }, 16);
+    return () => clearInterval(timer);
+  }, [inView, target]);
+  return count;
+}
+
+function StatCard({ item, inView, index }) {
+  const count = useCounter(item.number, inView);
+  const Icon = item.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+      className="flex flex-col items-center p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300 group"
+    >
+      <div className="p-2 rounded-lg bg-primary/10 text-primary mb-2 group-hover:scale-110 transition-transform duration-300">
+        <Icon className="w-4 h-4" />
+      </div>
+      <div className="text-2xl font-bold text-foreground">{count}{item.suffix}</div>
+      <div className="text-xs text-muted-foreground tracking-wide">{item.label}</div>
+    </motion.div>
+  );
+}
 
 export const AboutSection = () => {
   const [activeTab, setActiveTab] = useState('personal');
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [counter, setCounter] = useState(0);
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: '-100px' });
 
-  const achievements = [
-    { number: "15+", label: "Projects", icon: <Briefcase className="h-5 w-5" />, suffix: "" },
-    { number: "1", label: "Years Exp", icon: <Calendar className="h-5 w-5" />, suffix: "+" },
-    { number: "99", label: "Success", icon: <Target className="h-5 w-5" />, suffix: "%" },
-    { number: "10", label: "Clients", icon: <User className="h-5 w-5" />, suffix: "+" }
-  ];
-
-  const techStack = [
-    { category: "Frontend", items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML", "Tailwind"] },
-    { category: "Backend", items: ["Node.js", "Express", "Java", "Python"] },
-    { category: "Cloud", items: ["AWS", "Docker", "Vercel", "MongoDB"] }
-  ];
-
-  const features = ["Full-stack expertise", "Clean, maintainable code", "Performance optimization", "Agile methodology", "24/7 support", "Timely delivery"];
-
-  const socialLinks = [
-    { icon: <Github className="h-5 w-5" />, href: "https://www.github.com/sahilmd01" },
-    { icon: <Linkedin className="h-5 w-5" />, href: "https://www.linkedin.com/in/codewithkinu" },
-    { icon: <Twitter className="h-5 w-5" />, href: "#" },
-    { icon: <Mail className="h-5 w-5" />, href: "mailto:sahilmd.dev@gmail.com" }
-  ];
-
-  const tabContent = {
-    personal: "Passionate about creating digital solutions that make a difference. When I'm not coding, I'm exploring new technologies, contributing to open-source, and mentoring aspiring developers.",
-    professional: "With 1+ years in full-stack development, I've delivered 15+ successful projects using modern technologies. I specialize in scalable architecture and performance optimization.",
-    approach: "I believe in clean code, thorough testing, and user-centered design. My process emphasizes collaboration, agile methodologies, and continuous improvement."
+  const tabs = {
+    personal:     "I&apos;m a passionate Full-Stack Developer with a strong foundation in both frontend and backend technologies. My journey in web development started with curiosity about how things work on the internet, and has evolved into a professional pursuit of creating elegant, efficient, and user-friendly applications.",
+    professional: "With 1+ year of full-stack development experience, I&apos;ve delivered 15+ successful projects using modern technologies. I specialize in scalable architecture, clean code, and performance optimization to consistently exceed client expectations.",
+    approach:     "I believe in user-centered design and clean, maintainable code. My agile-driven process emphasizes collaboration, continuous improvement, and thorough testing to ensure every product ships with confidence.",
   };
 
-  useEffect(() => {
-    const handleMouseMove = (e) => setMousePosition({ x: e.clientX, y: e.clientY });
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  useEffect(() => {
-    const interval = setInterval(() => setCounter(prev => (prev + 1) % 4), 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Programmatic download function
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Sahil-resume.pdf'; // Must be in public folder
-    link.download = 'Sahil-resume.pdf';
+    link.href = '/Dharmi-resume.pdf';
+    link.download = 'Dharmi-resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
 
   return (
-    <section id="about" className="relative py-16 md:py-28 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-background via-background to-primary/5 overflow-hidden">
-      {/* Background Shapes */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute w-72 sm:w-96 h-72 sm:h-96 bg-primary/5 rounded-full blur-3xl transition-all duration-1000 ease-out" style={{ transform: `translate(${mousePosition.x * 0.02}px, ${mousePosition.y * 0.02}px)` }} />
-        <div className="absolute w-60 sm:w-80 h-60 sm:h-80 bg-secondary/5 rounded-full blur-3xl transition-all duration-1500 ease-out" style={{ transform: `translate(${mousePosition.x * -0.03}px, ${mousePosition.y * -0.03}px)` }} />
+    <section id="about" ref={ref} className="relative py-20 md:py-32 px-4 sm:px-6 lg:px-12 bg-gradient-to-br from-background via-background to-primary/5 overflow-hidden">
+
+      {/* Background blobs */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        <div className="absolute -top-32 -left-32 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
+        <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-secondary/10 rounded-full blur-3xl" />
         <div className="absolute inset-0 opacity-[0.03] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
-        <div className="absolute top-16 right-8 sm:top-20 sm:right-20 animate-float"><div className="w-6 sm:w-8 h-6 sm:h-8 bg-primary/20 rounded-lg rotate-45" /></div>
-        <div className="absolute bottom-32 left-8 sm:bottom-40 sm:left-20 animate-float animation-delay-2000"><div className="w-5 sm:w-6 h-5 sm:h-6 bg-secondary/20 rounded-full" /></div>
       </div>
 
-      <div className="container mx-auto max-w-7xl relative">
-        {/* Header */}
-        <div className="text-center mb-16 md:mb-20 px-2 sm:px-6">
-          <div className="inline-flex items-center gap-3 px-4 sm:px-6 py-2 sm:py-3 rounded-2xl bg-primary/10 border border-primary/20 mb-6 transition-all duration-500 hover:bg-primary/15 hover:scale-105 group cursor-pointer">
-            <div className="relative">
-              <Sparkles className="h-4 sm:h-5 w-4 sm:w-5 text-primary animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full animate-ping" />
-            </div>
-            <span className="text-sm sm:text-base font-semibold text-primary tracking-wide">ABOUT ME</span>
+      <div className="container mx-auto max-w-7xl">
+
+        {/* Section label */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
+            <Sparkles className="w-4 h-4 animate-pulse" />
+            ABOUT ME
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold mb-4 sm:mb-6">
-            <span className="bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">Transforming</span>
-            <span className="block text-primary animate-pulse">Ideas Into Reality</span>
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-            Building digital experiences that combine <span className="text-primary font-semibold">innovation</span>, <span className="text-primary font-semibold">performance</span>, and <span className="text-primary font-semibold">elegance</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
+            Crafting Digital  <span className="text-primary">Experiences</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            Turning ideas into reality through code, design, and determination.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 md:gap-12">
-          {/* Left Column */}
-          <div className="xl:col-span-2 space-y-8">
-            {/* About Card */}
-            <div className="bg-card/50 border border-border rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:border-primary/40 hover:bg-card/60 relative overflow-hidden group">
-              {/* Decorative Circles */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute top-0 right-0 w-24 sm:w-32 h-24 sm:h-32 bg-primary rounded-full -translate-y-16 translate-x-16" />
-                <div className="absolute bottom-0 left-0 w-20 sm:w-24 h-20 sm:h-24 bg-secondary rounded-full -translate-x-16 translate-y-16" />
-              </div>
+        {/* Two-column layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 xl:gap-20 items-center">
 
-              <div className="relative">
-                <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8">
-                  {/* Profile Image */}
-                  <div className="relative flex-shrink-0">
-                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-4 border-primary/20 shadow-2xl transition-all duration-500 group-hover:border-primary/40 group-hover:scale-105 md:group-hover:scale-110 relative">
-                      <img src="/profile-logo.png" alt="MD Sahil" className="w-full h-full object-cover" />
-                      <div className="absolute -bottom-2 -right-2 w-6 h-6 sm:w-8 sm:h-8 bg-green-500 rounded-full border-4 border-background flex items-center justify-center">
-                        <div className="w-2 h-2 bg-green-300 rounded-full animate-pulse" />
-                      </div>
-                    </div>
-                  </div>
+          {/* ───────── LEFT — Photo Column ───────── */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="flex flex-col items-center justify-center relative"
+          >
+            <div className="relative group">
+              {/* Decorative rings */}
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="absolute -inset-4 rounded-full border border-dashed border-primary/30 opacity-50 group-hover:opacity-100 transition-opacity"
+              />
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                className="absolute -inset-8 rounded-full border border-dashed border-secondary/20 opacity-30 group-hover:opacity-60 transition-opacity"
+              />
 
-                  {/* Achievements */}
-                  <div className="flex-1 text-center md:text-left">
-                    <h2 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">MD Sahil</h2>
-                    <p className="text-primary text-base sm:text-lg font-semibold mb-3 sm:mb-4">Full Stack Developer</p>
-                    <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4 sm:mb-6">
-                      {achievements.map((achievement, index) => (
-                        <div key={index} className={`p-2 sm:p-3 rounded-xl bg-background/50 border border-border transition-all duration-300 hover:scale-105 hover:border-primary/30 ${counter === index ? 'bg-primary/10 border-primary/50' : ''}`}>
-                          <div className="flex items-center gap-2 justify-center md:justify-start">
-                            {achievement.icon}
-                            <div>
-                              <div className="font-bold text-sm sm:text-lg">{achievement.number}{achievement.suffix}</div>
-                              <div className="text-[10px] sm:text-xs text-muted-foreground">{achievement.label}</div>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+              {/* Main Photo Container */}
+              <motion.div
+                animate={{ y: [0, -15, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+                className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full p-2 bg-gradient-to-br from-primary via-purple-500 to-secondary shadow-2xl shadow-primary/20 overflow-hidden"
+              >
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-background bg-muted relative group-hover:scale-105 transition-transform duration-700">
+                  <img
+                    src={GITHUB_PHOTO}
+                    alt="Dharmi Patel"
+                    className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                  />
+                  {/* Overlay for depth */}
+                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-700" />
                 </div>
+              </motion.div>
 
-                {/* Tabs */}
-                <div className="flex flex-col sm:flex-row border-b border-border mb-4 sm:mb-6">
-                  {['personal', 'professional', 'approach'].map(tab => (
-                    <button
-                      key={tab}
-                      onClick={() => setActiveTab(tab)}
-                      className={`flex-1 py-2 sm:py-3 px-2 sm:px-4 text-sm sm:text-base font-medium transition-all duration-300 ${activeTab === tab ? 'text-primary border-b-2 border-primary' : 'text-muted-foreground hover:text-foreground'}`}
-                    >
-                      {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                    </button>
-                  ))}
+              {/* Floating Badge (Optional decorative element) */}
+              <motion.div
+                animate={{ y: [0, 10, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                className="absolute -bottom-4 -right-4 bg-background/90 backdrop-blur-md border border-border p-4 rounded-2xl shadow-xl hidden sm:block"
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-xs font-bold tracking-widest uppercase text-foreground">Open to roles</span>
                 </div>
+              </motion.div>
+            </div>
+          </motion.div>
 
-                {/* Tab Content */}
-                <div className="min-h-[100px] sm:min-h-[120px]">
-                  <AnimatePresence mode="sync">
-                    <motion.p
-                      key={activeTab}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed"
-                    >
-                      {tabContent[activeTab]}
-                    </motion.p>
-                  </AnimatePresence>
-                </div>
-              </div>
+          {/* ───────── RIGHT — Content Column ───────── */}
+          <motion.div
+            initial={{ opacity: 0, x: 60 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+            className="space-y-8"
+          >
+            {/* Name / title */}
+            <div>
+              <h3 className="text-3xl sm:text-4xl font-bold mb-1">DHARMI PATEL</h3>
+              <p className="text-primary font-semibold text-lg">Full-Stack Developer & UI Designer</p>
             </div>
 
-            {/* Tech Stack */}
-            <div className="bg-card/50 border border-border rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:border-primary/40 hover:bg-card/60">
-              <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-                <Code className="h-4 sm:h-6 w-4 sm:w-6 text-primary" />Tech Stack Overview
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-                {techStack.map((stack, index) => (
-                  <div key={index} className="bg-background/50 border border-border rounded-2xl p-4 sm:p-6 transition-all duration-300 hover:border-primary/30 hover:scale-105 group">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                      <div className="p-1 sm:p-2 bg-primary/10 rounded-lg text-primary group-hover:scale-110 transition-transform duration-300"><Code className="h-3 sm:h-4 w-3 sm:w-4" /></div>
-                      <h4 className="font-semibold text-sm sm:text-lg">{stack.category}</h4>
-                    </div>
-                    <div className="space-y-1 sm:space-y-2">
-                      {stack.items.map((item, itemIndex) => (
-                        <div key={itemIndex} className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors duration-300">
-                          <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />{item}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+            {/* Tab switcher */}
+            <div className="bg-card/50 border border-border rounded-2xl overflow-hidden backdrop-blur-xl">
+              <div className="flex border-b border-border">
+                {['personal', 'professional', 'approach'].map(tab => (
+                  <button
+                    key={tab}
+                    onClick={() => setActiveTab(tab)}
+                    className={`flex-1 py-3 text-sm font-medium transition-all duration-300 relative ${
+                      activeTab === tab ? 'text-primary' : 'text-muted-foreground hover:text-foreground'
+                    }`}
+                  >
+                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                    {activeTab === tab && (
+                      <motion.div layoutId="tabIndicator" className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary" />
+                    )}
+                  </button>
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* Right Column */}
-          <div className="space-y-6 sm:space-y-8">
-            {/* Work Together */}
-            <div className="bg-card/50 border border-border rounded-3xl p-6 sm:p-8 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:border-primary/40 hover:bg-card/60">
-              <h3 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-6 text-center">Let's Work Together</h3>
-              <div className="flex flex-col sm:flex-row sm:space-x-4 space-y-3 sm:space-y-0">
-                <a href="#contact" className="flex-1 block w-full p-3 sm:p-4 bg-primary text-primary-foreground rounded-xl text-center font-semibold transition-all duration-300 hover:bg-primary/90 hover:scale-105 hover:shadow-lg group">
-                  <div className="flex items-center justify-center gap-2 sm:gap-3"><User className="h-4 sm:h-5 w-4 sm:w-5 group-hover:scale-110 transition-transform duration-300" />Start a Project</div>
-                </a>
-
-                {/* Download Button */}
-                <button
-                  onClick={handleDownload}
-                  className="flex-1 block w-full p-3 sm:p-4 border border-border rounded-xl text-center font-semibold transition-all duration-300 hover:bg-accent hover:border-primary/30 hover:scale-105 hover:shadow-lg group"
+              <AnimatePresence mode="wait">
+                <motion.p
+                  key={activeTab}
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25 }}
+                  className="p-6 text-muted-foreground leading-relaxed text-sm sm:text-base"
                 >
-                  <div className="flex items-center justify-center gap-2 sm:gap-3">
-                    <Download className="h-4 sm:h-5 w-4 sm:w-5 group-hover:translate-y-0.5 transition-transform duration-300" />
-                    Download Resume
-                  </div>
-                </button>
-              </div>
-
-              {/* Social Links */}
-              <div className="mt-4 sm:mt-6 p-3 sm:p-4 bg-background/50 rounded-xl border border-border">
-                <h4 className="font-semibold mb-2 text-center text-sm sm:text-base">Quick Connect</h4>
-                <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-                  {socialLinks.map((social, index) => (
-                    <a key={index} href={social.href} className="p-2 bg-background rounded-lg text-muted-foreground hover:text-primary hover:bg-primary/10 transition-all duration-300 hover:scale-110">{social.icon}</a>
-                  ))}
-                </div>
-              </div>
+                  {tabs[activeTab]}
+                </motion.p>
+              </AnimatePresence>
             </div>
 
-            {/* Why Choose Me */}
-            <div className="bg-card/50 border border-border rounded-3xl p-4 sm:p-6 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:border-primary/40 hover:bg-card/60">
-              <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-4 flex items-center gap-2"><Star className="h-4 sm:h-5 w-4 sm:w-5 text-primary" />Why Choose Me</h3>
-              <div className="space-y-2 sm:space-y-3">
-                {features.map((feature, index) => (
-                  <div key={index} className="flex items-center gap-2 sm:gap-3 p-1 sm:p-2 rounded-lg transition-all duration-300 hover:bg-background/50 hover:scale-105">
-                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse" /><span className="text-xs sm:text-sm text-muted-foreground hover:text-foreground">{feature}</span>
-                  </div>
+            {/* Skills chips */}
+            <div>
+              <h4 className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-3">Core Skills</h4>
+              <div className="flex flex-wrap gap-2">
+                {skills.map((skill, i) => (
+                  <motion.span
+                    key={skill}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={inView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.5 + i * 0.07 }}
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-medium hover:bg-primary/20 transition-colors duration-200 cursor-default"
+                  >
+                    <CheckCircle2 className="w-3 h-3" />
+                    {skill}
+                  </motion.span>
                 ))}
               </div>
             </div>
 
-            {/* Availability */}
-            <div className="bg-card/60 border border-border rounded-3xl p-4 sm:p-6 backdrop-blur-xl shadow-2xl transition-all duration-500 hover:shadow-3xl hover:border-primary/40 hover:bg-card-70">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 mb-2 sm:mb-3">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="relative">
-                    <div className="w-2 h-2 sm:w-3 sm:h-3 bg-green-500 rounded-full animate-pulse" />
-                    <div className="absolute inset-0 w-2 sm:w-3 h-2 sm:h-3 bg-green-500 rounded-full animate-ping" />
-                  </div>
-                  <span className="font-semibold text-xs sm:text-sm">Available</span>
-                </div>
-                <span className="text-xs sm:text-sm text-muted-foreground bg-green-500/10 text-green-600 px-2 py-1 rounded-lg">
-                  For new projects
-                </span>
-              </div>
-              <div className="text-[10px] sm:text-xs text-muted-foreground text-center bg-background/50 rounded-lg p-1 sm:p-2">
-                ⚡ Response time: Under 24 hours
-              </div>
+
+            {/* CTA buttons */}
+            <div className="flex flex-wrap gap-4">
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:opacity-90 transition-all duration-300 shadow-lg shadow-primary/25"
+              >
+                Hire Me <ArrowRight className="w-4 h-4" />
+              </motion.a>
+              <motion.button
+                onClick={handleDownload}
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card/50 font-semibold hover:border-primary/50 hover:text-primary transition-all duration-300"
+              >
+                <Download className="w-4 h-4" />
+                Download CV
+              </motion.button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-
-      {/* Styles */}
-      <style>
-        {`
-          @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
-          .animate-float { animation: float 3s ease-in-out infinite; }
-          .animation-delay-2000 { animation-delay: 2s; }
-        `}
-      </style>
     </section>
   );
 };

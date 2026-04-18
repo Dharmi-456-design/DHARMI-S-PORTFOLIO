@@ -31,7 +31,7 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
   const portfolioUrl = "www.devlyhub.in";
   const welcomeMessages = [
     "Crafting digital experiences",
-    "Software Engineer",
+    "Full-Stack Developer",
     "Full-stack development"
   ];
 
@@ -194,13 +194,13 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
                 style={{ color: currentColors.primary }}
                 variants={contentVariants}
               >
-                <span className="inline-block">Hello</span>
+                <span className="inline-block">DHARMI</span>
                 <motion.span 
                   className="inline-block ml-2 sm:ml-3 relative"
                   style={{ color: currentColors.secondary }}
                   variants={contentVariants}
                 >
-                  There !
+                  PATEL
                   <motion.span 
                     className="absolute -bottom-1 sm:-bottom-2 left-0 h-0.5 sm:h-1 w-full"
                     style={{ backgroundColor: currentColors.secondary }}
@@ -210,37 +210,7 @@ const WelcomeScreen = ({ onWelcomeComplete }) => {
               </motion.h1>
             )}
 
-            {phase >= 2 && (
-              <motion.div 
-                className="text-base sm:text-lg md:text-xl lg:text-2xl max-w-3xl mx-auto leading-relaxed font-light"
-                style={{ color: currentColors.muted }}
-                variants={contentVariants}
-              >
-                <motion.div 
-                  className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg font-mono flex justify-center items-center"
-                  style={{ color: currentColors.link }}
-                >
-                  {typedText}
-                  {phase >= 2 && (
-                    <motion.span 
-                      className="ml-0.5 h-4 sm:h-5 md:h-6 w-0.5 sm:w-1 inline-block"
-                      style={{ backgroundColor: currentColors.link }}
-                      variants={cursorVariants}
-                      animate="blinking"
-                    />
-                  )}
-                </motion.div>
-                <motion.p 
-                  className="mt-2 sm:mt-4 text-xs sm:text-sm md:text-base"
-                  style={{ color: currentColors.muted }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 1.5 }}
-                >
-                  (This is my portfolio website)
-                </motion.p>
-              </motion.div>
-            )}
+
 
             {phase >= 3 && (
               <motion.div 

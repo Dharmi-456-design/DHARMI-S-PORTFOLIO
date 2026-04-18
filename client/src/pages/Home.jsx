@@ -4,9 +4,15 @@ import { HeroSection } from "../components/HeroSection";
 import { AboutSection } from "../components/AboutSection";
 import { SkillsSection } from "../components/SkillsSection";
 import { ProjectsSection } from "../components/ProjectsSection";
+import { Certificates } from "../components/Certificates";
 import { ContactSection } from "../components/ContactSection";
 import { Footer } from "../components/Footer";
-import { TestimonialSection } from "../components/Testimonial";
+import { EducationSection } from "../components/EducationSection";
+import { LeetCodeSection } from "../components/LeetCodeSection";
+import { FigmaDesigns } from "../components/FigmaDesigns";
+import { Hackathons } from "../components/Hackathons";
+import { Achievements } from "../components/Achievements";
+import { ResumeSection } from "../components/ResumeSection";
 
 export const Home = () => {
   return (
@@ -23,7 +29,13 @@ export const Home = () => {
         <AboutSection />
         <SkillsSection />
         <ProjectsSection />
-        <TestimonialSection />
+        <FigmaDesigns />
+        <Certificates />
+        <Hackathons />
+        <Achievements />
+        <ResumeSection />
+        <EducationSection />
+        <LeetCodeSection />
         <ContactSection />
         
       </main>
