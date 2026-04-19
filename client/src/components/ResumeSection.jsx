@@ -11,7 +11,7 @@ const highlights = [
 
 export const ResumeSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const resumeUrl = '/Dharmi-resume.pdf';
+  const resumeUrl = '/Dharmi_Patel_Resume.pdf';
 
   return (
     <section id="resume" className="relative py-24 md:py-32 px-4 sm:px-6 overflow-hidden">
@@ -75,7 +75,7 @@ export const ResumeSection = () => {
                   <div className="w-3 h-3 rounded-full bg-green-400/80" />
                 </div>
                 <div className="flex-1 mx-3 h-5 bg-background/60 rounded-full text-[10px] text-muted-foreground flex items-center px-3">
-                  Dharmi-resume.pdf
+                  Dharmi_Patel_Resume.pdf
                 </div>
               </div>
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Target, Award, TrendingUp, Sparkles, Code2, BrainCircuit, Trophy, Loader2 } from 'lucide-react';
+const PROFILE_PHOTO = "https://avatars.githubusercontent.com/u/226024353?v=4";
 
 const SegmentedBar = ({ solved, total, color, bgColor }) => {
   const segments = 10;
@@ -164,8 +165,8 @@ export const LeetCodeSection = () => {
                 <div className="w-28 h-28 rounded-3xl bg-gradient-to-br from-[#FFA116] to-[#FFD016] p-0.5 rotate-3 group-hover:rotate-6 transition-transform duration-500">
                   <div className="w-full h-full rounded-3xl bg-background flex items-center justify-center -rotate-3 group-hover:-rotate-6 transition-transform duration-500 overflow-hidden">
                     <img 
-                      src={`https://assets.leetcode.com/users/${username}/avatar_1776067283.png`} 
-                      alt="LeetCode Avatar" 
+                      src={PROFILE_PHOTO} 
+                      alt="Personal Profile Photo" 
                       className="w-full h-full object-cover scale-110"
                       onError={(e) => { e.target.src = "https://assets.leetcode.com/static_assets/public/images/LeetCode_logo.png" }}
                     />

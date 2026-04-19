@@ -71,8 +71,8 @@ export const AboutSection = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Dharmi-resume.pdf';
-    link.download = 'Dharmi-resume.pdf';
+    link.href = '/Dharmi_Patel_Resume.pdf';
+    link.download = 'Dharmi_Patel_Resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

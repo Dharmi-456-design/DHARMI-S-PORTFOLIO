@@ -62,7 +62,7 @@ export const HeroSection = () => {
 
   const handleViewResume = () => {
     // Open resume in new tab
-    window.open('/Dharmi-resume.pdf', '_blank', 'noopener,noreferrer');
+    window.open('/Dharmi_Patel_Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   const socialLinks = [
