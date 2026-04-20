@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Briefcase, Code, Download, Calendar, Sparkles, Target, User, Github, Linkedin, Twitter, Youtube, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Briefcase, Code, Eye, Calendar, Sparkles, Target, User, Github, Linkedin, Twitter, Youtube, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 const GITHUB_PHOTO = 'https://avatars.githubusercontent.com/u/226024353?v=4';
@@ -69,13 +69,8 @@ export const AboutSection = () => {
     approach:     "I believe in user-centered design and clean, maintainable code. My agile-driven process emphasizes collaboration, continuous improvement, and thorough testing to ensure every product ships with confidence.",
   };
 
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = '/Dharmi_Patel_Resume.pdf';
-    link.download = 'Dharmi_Patel_Resume.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleViewResume = () => {
+    window.open('/Dharmi_Patel_Resume.pdf', '_blank', 'noopener,noreferrer');
   };
 
   return (
@@ -239,13 +234,13 @@ export const AboutSection = () => {
                 Hire Me <ArrowRight className="w-4 h-4" />
               </motion.a>
               <motion.button
-                onClick={handleDownload}
+                onClick={handleViewResume}
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 className="flex items-center gap-2 px-6 py-3 rounded-xl border border-border bg-card/50 font-semibold hover:border-primary/50 hover:text-primary transition-all duration-300"
               >
-                <Download className="w-4 h-4" />
-                Download CV
+                <Eye className="w-4 h-4" />
+                View Resume
               </motion.button>
             </div>
           </motion.div>
