@@ -28,8 +28,22 @@ export const projects = [
     status: "Live",
     highlights: ["Creative UI", "Framer Motion"]
   },
-  {
+   {
     id: 3,
+    title: 'GEN-Z',
+    category: 'Clones',
+    description: 'A dynamic, AI-powered social media platform designed for Gen Z, featuring intelligent content curation, real-time trend analysis, and multimedia sharing.',
+    image: 'https://taupe-croquembouche-cb034d.netlify.app/assets/hero-Jz0ycX1P.jpg', // Adding placeholder image since it was empty
+    tags: ['React', 'Firebase', 'TMDB API'],
+    demoUrl: 'https://taupe-croquembouche-cb034d.netlify.app/login',
+    githubUrl: 'https://github.com/Dharmi-456-design/GEN-Z',
+    youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+    accentColor: "from-red-600 to-red-800",
+    status: "Development",
+    highlights: ["Auth System", "API Integration"]
+  },
+  {
+    id: 4,
     title: 'Trip Dispatcher',
     category: 'Full Stack',
     description: 'A modern logistics dashboard for fleet management, built for the Odoo x Gujarat Hackathon. Tracks routes, vehicles, and cargo status in real-time.',
@@ -44,13 +58,13 @@ export const projects = [
     highlights: ["Dark Logistics UI", "Real-time Tracking"]
   },
   {
-    id: 4,
+    id: 5,
     title: 'FORME',
     category: 'Games',
     description: 'An interactive 2D space shooter game built using Canvas API and Javascript logic.',
     image: 'https://res.cloudinary.com/dtkzxbcjx/image/upload/v1740156966/igvbvpgmgyzkbrthcdma.png',
     tags: ['Javascript', 'Canvas API'],
-    demoUrl: 'https://visionary-lokum-d50571.netlify.app/',
+    demoUrl: 'https://dharmi-forme-clone.netlify.app/',
     githubUrl: 'https://github.com/Dharmi-456-design/6th-website',
     youtubeUrl: 'https://www.youtube.com/@DharmiPatel-x5l',
     accentColor: "from-purple-500 to-indigo-600",
@@ -58,28 +72,29 @@ export const projects = [
     highlights: ["Canvas API", "Game Logic"]
   },
   {
-    id: 5,
+    id: 6,
     title: 'Mercor Clone',
     category: 'Clones',
     description: 'Clone of Mercor - a U.S.-based AI-powered hiring and talent marketplace.',
     image: 'https://res.cloudinary.com/dtkzxbcjx/image/upload/v1740156747/Screenshot_2025-02-21_221308_uqsfq2.png',
     tags: ['React', 'Tailwind'],
-    demoUrl: 'https://jazzy-monstera-847527.netlify.app/',
+    demoUrl: 'https://dharmi-mercor-clone.netlify.app/',
     githubUrl: 'https://github.com/Dharmi-456-design/Mercor',
     youtubeUrl: 'https://www.youtube.com/@DharmiPatel-x5l',
     accentColor: "from-rose-500 to-pink-600",
     status: "Live",
     highlights: ["AI Hiring", "Marketplace UI"]
   },
+ 
   {
-    id: 6,
-    title: 'GEN-Z',
+    id: 7,
+    title: 'OWND!',
     category: 'Clones',
-    description: 'A dynamic, AI-powered social media platform designed for Gen Z, featuring intelligent content curation, real-time trend analysis, and multimedia sharing.',
-    image: 'https://res.cloudinary.com/dtkzxbcjx/image/upload/v1740156966/igvbvpgmgyzkbrthcdma.png', // Adding placeholder image since it was empty
+    description: 'A modern e-commerce fashion platform delivering stylish shopping with a seamless user experience.',
+    image: 'https://www.ownd.in/cdn/shop/files/Desktop-01.jpg?v=1758613176&width=1900', // Adding placeholder image since it was empty
     tags: ['React', 'Firebase', 'TMDB API'],
-    demoUrl: 'https://majestic-zabaione-62da18.netlify.app/login',
-    githubUrl: 'https://github.com/Dharmi-456-design/GEN-Z',
+    demoUrl: 'https://dharmi-ownd-clone.netlify.app/',
+    githubUrl: 'https://github.com/Dharmi-456-design/3rd-website',
     youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     accentColor: "from-red-600 to-red-800",
     status: "Development",

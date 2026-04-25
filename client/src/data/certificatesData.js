@@ -1,6 +1,6 @@
 export const certificates = [
-  
-   {
+
+  {
     title: 'ArtPark CodeForge',
     issuer: 'ArtPark CodeForge',
     date: 'April 2026',
@@ -8,7 +8,18 @@ export const certificates = [
     description: 'A professional certificate demonstrating successful completion of a structured learning course, reflecting practical skill development and continuous upskilling',
     link: 'https://media.licdn.com/dms/image/v2/D4D22AQGv5nbpcN44dg/feedshare-shrink_480/B4DZ1UXnOSIYAk-/0/1775236969799?e=1777507200&v=beta&t=mhasFkXfNPni0llJnrRGbbQAtbLpHpmpJPYANSocoq8'
   },
-  
+
+  {
+    title: 'IEEE SB DAIICT',
+    issuer: 'IEEE',
+    date: 'April 2026',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQEy5CIBgyZVEw/feedshare-shrink_480/B4DZ3AgW9ZHsAs-/0/1777051201653?e=1778716800&v=beta&t=t490SJOttqZRRy3zZRj6BXm_fVV8dt1ZAB1WvVAtyCY',
+    description: 'I am grateful to the organizers for this opportunity and look forward to continuing my journey of learning and professional growth.',
+    link: 'https://media.licdn.com/dms/image/v2/D4D22AQEy5CIBgyZVEw/feedshare-shrink_480/B4DZ3AgW9ZHsAs-/0/1777051201653?e=1778716800&v=beta&t=t490SJOttqZRRy3zZRj6BXm_fVV8dt1ZAB1WvVAtyCY'
+  },
+
+
+
   {
     title: 'GitHub Copilot',
     issuer: 'GitHub',
@@ -17,9 +28,9 @@ export const certificates = [
     description: 'Leveraged GitHub Copilot to accelerate coding workflows and improve code quality.',
     link: 'https://media.licdn.com/dms/image/v2/D4D22AQF-mQwgDmGcnw/feedshare-shrink_480/B4DZzV1LeGGsAk-/0/1773114013824?e=1777507200&v=beta&t=FUQnIdNdSTDyZaP0yVIJaUSnsvgvmjjDyxfeF_n8Fbw'
   },
-  
-  
-  
+
+
+
   {
     title: 'Hackathon 2025',
     issuer: 'SU Hackathon',
@@ -52,5 +63,5 @@ export const certificates = [
     description: 'Mastered HTML basics to create structured web pages with semantic elements and media.',
     link: 'https://media.licdn.com/dms/image/v2/D5622AQHT1ZtknPYBLg/feedshare-shrink_480/B56Zure46VG0AY-/0/1768108562580?e=1776297600&v=beta&t=y6PlHCXeJL5WlU65oYR1paXEZ2XI3T5lidVo2cCB5Uo'
   },
-  
+
 ];
