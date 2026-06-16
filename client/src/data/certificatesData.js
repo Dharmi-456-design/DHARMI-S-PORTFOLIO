@@ -4,7 +4,7 @@ export const certificates = [
     title: 'ArtPark CodeForge',
     issuer: 'ArtPark CodeForge',
     date: 'April 2026',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQGv5nbpcN44dg/feedshare-shrink_480/B4DZ1UXnOSIYAk-/0/1775236969799?e=1777507200&v=beta&t=mhasFkXfNPni0llJnrRGbbQAtbLpHpmpJPYANSocoq8',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQGv5nbpcN44dg/feedshare-shrink_800/B4DZ1UXnOSIYAc-/0/1775236969716?e=1782950400&v=beta&t=tiFNfVD9HBSg_ezZ35e5KN14bgyOhEl3-XtEo9HroT0',
     description: 'A professional certificate demonstrating successful completion of a structured learning course, reflecting practical skill development and continuous upskilling',
     link: 'https://media.licdn.com/dms/image/v2/D4D22AQGv5nbpcN44dg/feedshare-shrink_800/B4DZ1UXnOSIYAc-/0/1775236969716?e=1782950400&v=beta&t=tiFNfVD9HBSg_ezZ35e5KN14bgyOhEl3-XtEo9HroT0'
   },
