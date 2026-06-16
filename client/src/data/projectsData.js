@@ -34,7 +34,7 @@ export const projects = [
     title: 'ShuttleCore',
     category: 'Full Stack',
     description: '.',
-    image: '',
+    image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&auto=format&fit=crop',
     tags: ['React', 'Framer Motion'],
     demoUrl: 'https://shuttle-core2.netlify.app/',
     githubUrl: 'https://github.com/Dharmi-456-design/shuttlecore',
