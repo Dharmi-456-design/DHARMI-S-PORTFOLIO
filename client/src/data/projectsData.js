@@ -28,14 +28,29 @@ export const projects = [
     status: "Live",
     highlights: ["Creative UI", "Framer Motion"]
   },
-   {
+
+  {
     id: 3,
+    title: 'ShuttleCore',
+    category: 'Full Stack',
+    description: '.',
+    image: '',
+    tags: ['React', 'Framer Motion'],
+    demoUrl: 'https://shuttle-core2.netlify.app/',
+    githubUrl: 'https://github.com/Dharmi-456-design/shuttlecore',
+    youtubeUrl: 'https://youtu.be/7Gin6qRqclM',
+    accentColor: "from-amber-500 to-orange-600",
+    status: "Live",
+    highlights: ["Creative UI", "Framer Motion"]
+  },
+   {
+    id: 4,
     title: 'GEN-Z',
     category: 'Clones',
     description: 'A dynamic, AI-powered social media platform designed for Gen Z, featuring intelligent content curation, real-time trend analysis, and multimedia sharing.',
     image: 'https://taupe-croquembouche-cb034d.netlify.app/assets/hero-Jz0ycX1P.jpg', // Adding placeholder image since it was empty
     tags: ['React', 'Firebase', 'TMDB API'],
-    demoUrl: 'https://taupe-croquembouche-cb034d.netlify.app/login',
+    demoUrl: 'https://genz-1.netlify.app/',
     githubUrl: 'https://github.com/Dharmi-456-design/GEN-Z',
     youtubeUrl: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
     accentColor: "from-red-600 to-red-800",
@@ -43,7 +58,7 @@ export const projects = [
     highlights: ["Auth System", "API Integration"]
   },
   {
-    id: 4,
+    id: 5,
     title: 'Trip Dispatcher',
     category: 'Full Stack',
     description: 'A modern logistics dashboard for fleet management, built for the Odoo x Gujarat Hackathon. Tracks routes, vehicles, and cargo status in real-time.',
@@ -58,7 +73,7 @@ export const projects = [
     highlights: ["Dark Logistics UI", "Real-time Tracking"]
   },
   {
-    id: 5,
+    id: 6,
     title: 'FORME',
     category: 'Games',
     description: 'An interactive 2D space shooter game built using Canvas API and Javascript logic.',
@@ -72,7 +87,7 @@ export const projects = [
     highlights: ["Canvas API", "Game Logic"]
   },
   {
-    id: 6,
+    id: 7,
     title: 'Mercor Clone',
     category: 'Clones',
     description: 'Clone of Mercor - a U.S.-based AI-powered hiring and talent marketplace.',
@@ -87,7 +102,7 @@ export const projects = [
   },
  
   {
-    id: 7,
+    id: 8,
     title: 'OWND!',
     category: 'Clones',
     description: 'A modern e-commerce fashion platform delivering stylish shopping with a seamless user experience.',
