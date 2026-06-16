@@ -33,15 +33,15 @@ export const projects = [
     id: 3,
     title: 'ShuttleCore',
     category: 'Full Stack',
-    description: '.',
+    description: 'ShuttleCore is a comprehensive fleet management platform designed for modern logistics operations. It enables real-time tracking of vehicles, monitoring of cargo status, and efficient route optimization, ensuring seamless coordination and delivery management.',
     image: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&auto=format&fit=crop',
-    tags: ['React', 'Framer Motion'],
+    tags: ['React', 'Node.js', 'MongoDB', 'Real-time Tracking'],
     demoUrl: 'https://shuttle-core2.netlify.app/',
     githubUrl: 'https://github.com/Dharmi-456-design/shuttlecore',
     youtubeUrl: 'https://youtu.be/7Gin6qRqclM',
     accentColor: "from-amber-500 to-orange-600",
     status: "Live",
-    highlights: ["Creative UI", "Framer Motion"]
+    highlights: ["Real-time Tracking", "Route Optimization", "Fleet Management"]
   },
    {
     id: 4,
