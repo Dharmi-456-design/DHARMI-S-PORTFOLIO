@@ -22,7 +22,7 @@ export const certificates = [
     title: 'OceanLab × CHARUSAT Hacks 2026 ',
     issuer: 'CHARUSAT UNIVERSITY',
     date: 'April 2026',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQEy5CIBgyZVEw/feedshare-shrink_480/B4DZ3AgW9ZHsAs-/0/1777051201653?e=1778716800&v=beta&t=t490SJOttqZRRy3zZRj6BXm_fVV8dt1ZAB1WvVAtyCY',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQEy5CIBgyZVEw/feedshare-shrink_800/B4DZ3AgW9ZHsAk-/0/1777051201653?e=1782950400&v=beta&t=wcnO8rLctAVdEfqm3cqtXsVvqPNennaN5_2XrEIsFvc',
     description: 'I am grateful to the organizers for this opportunity and look forward to continuing my journey of learning and professional growth.',
     link: 'https://media.licdn.com/dms/image/v2/D4D22AQEy5CIBgyZVEw/feedshare-shrink_800/B4DZ3AgW9ZHsAk-/0/1777051201653?e=1782950400&v=beta&t=wcnO8rLctAVdEfqm3cqtXsVvqPNennaN5_2XrEIsFvc'
   },
@@ -41,7 +41,7 @@ export const certificates = [
     title: 'GitHub Copilot',
     issuer: 'GitHub',
     date: 'March 2026',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQF-mQwgDmGcnw/feedshare-shrink_480/B4DZzV1LeGGsAk-/0/1773114013824?e=1777507200&v=beta&t=FUQnIdNdSTDyZaP0yVIJaUSnsvgvmjjDyxfeF_n8Fbw',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQFZD5BY59KfZg/feedshare-shrink_800/B4DZzgjK_JIAAc-/0/1773293842705?e=1782950400&v=beta&t=r5ADHJsX1SvulnOtEQCJzSXYvCG3Rdj_XrLls2Tfe0E',
     description: 'Leveraged GitHub Copilot to accelerate coding workflows and improve code quality.',
     link: 'https://media.licdn.com/dms/image/v2/D4D22AQFZD5BY59KfZg/feedshare-shrink_800/B4DZzgjK_JIAAc-/0/1773293842705?e=1782950400&v=beta&t=r5ADHJsX1SvulnOtEQCJzSXYvCG3Rdj_XrLls2Tfe0E'
   },
@@ -52,7 +52,7 @@ export const certificates = [
     title: 'Hackathon 2025',
     issuer: 'SU Hackathon',
     date: 'March 2025',
-    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHZnNnTlie2RQ/feedshare-shrink_480/B4DZ0wSFjyGgAk-/0/1774631541309?e=1776297600&v=beta&t=waH_NR0bpcFiTjQT9sV3zRLPPhUkFPTybJgvcPYVNww',
+    image: 'https://media.licdn.com/dms/image/v2/D4D22AQHZnNnTlie2RQ/feedshare-shrink_800/B4DZ0wSFjyGgAc-/0/1774631541256?e=1782950400&v=beta&t=anCN3XZp3rFVS9DM6d7XytQNkhGkO9S7ZISti3clpEY',
     description: 'Showcased innovative solutions and teamwork in a high-pressure hackathon environment.',
     link: 'https://media.licdn.com/dms/image/v2/D4D22AQHZnNnTlie2RQ/feedshare-shrink_800/B4DZ0wSFjyGgAc-/0/1774631541256?e=1782950400&v=beta&t=anCN3XZp3rFVS9DM6d7XytQNkhGkO9S7ZISti3clpEY'
   },
@@ -60,7 +60,7 @@ export const certificates = [
     title: 'B10X',
     issuer: 'B10X',
     date: 'January 2026',
-    image: 'https://media.licdn.com/dms/image/v2/D5622AQFgt9_mwwc6dQ/feedshare-shrink_480/B56Zun94vWHgAY-/0/1768049577982?e=1777507200&v=beta&t=et0RFBmm-gVZcJZy2ub7WFIEc-zGRIVkVffiEQXGTJI',
+    image: 'https://media.licdn.com/dms/image/v2/D5622AQFgt9_mwwc6dQ/feedshare-shrink_480/B56Zun94vWHgAY-/0/1768049577982?e=1782950400&v=beta&t=etp6QduiMPExlzNtSoGvO75wv2btIwIadxS95euEHwo',
     description: 'Gained practical knowledge in Azure cloud computing and project deployment.',
     link: 'https://media.licdn.com/dms/image/v2/D5622AQFgt9_mwwc6dQ/feedshare-shrink_480/B56Zun94vWHgAY-/0/1768049577982?e=1782950400&v=beta&t=etp6QduiMPExlzNtSoGvO75wv2btIwIadxS95euEHwo'
   },
@@ -68,7 +68,7 @@ export const certificates = [
     title: 'Introduction to C',
     issuer: 'Sololearn',
     date: 'December 2025',
-    image: 'https://media.licdn.com/dms/image/v2/D5622AQFBEga9WfMBNg/feedshare-shrink_480/B56ZucHZNmJgAY-/0/1767850743589?e=1776297600&v=beta&t=nVGHax6bykKwhsPFLNJTMeA2yWf7Uex2G_YR7tOYSXE',
+    image: 'https://media.licdn.com/dms/image/v2/D5622AQFBEga9WfMBNg/feedshare-shrink_480/B56ZucHZNmJgAY-/0/1767850743589?e=1782950400&v=beta&t=Kh71RKKsZwBeKaDUAUcteZj0qnFYk7DoiMumGa2NJf4',
     description: 'Learned the fundamentals of C programming, including loops, functions, and data structures.',
     link: 'https://media.licdn.com/dms/image/v2/D5622AQFBEga9WfMBNg/feedshare-shrink_480/B56ZucHZNmJgAY-/0/1767850743589?e=1782950400&v=beta&t=Kh71RKKsZwBeKaDUAUcteZj0qnFYk7DoiMumGa2NJf4'
   },
@@ -76,7 +76,7 @@ export const certificates = [
     title: 'Introduction to HTML',
     issuer: 'Simplilearn',
     date: 'January 2026',
-    image: 'https://media.licdn.com/dms/image/v2/D5622AQHT1ZtknPYBLg/feedshare-shrink_480/B56Zure46VG0AY-/0/1768108562580?e=1776297600&v=beta&t=y6PlHCXeJL5WlU65oYR1paXEZ2XI3T5lidVo2cCB5Uo',
+    image: 'https://media.licdn.com/dms/image/v2/D5622AQE7eik97PZdvQ/feedshare-shrink_480/B56Zun6dCUHIAY-/0/1768048677642?e=1782950400&v=beta&t=464zKWqFyQrSsJDAqgKhZm6kic4lQphNDKJG2fHUxx4',
     description: 'Mastered HTML basics to create structured web pages with semantic elements and media.',
     link: 'https://media.licdn.com/dms/image/v2/D5622AQE7eik97PZdvQ/feedshare-shrink_480/B56Zun6dCUHIAY-/0/1768048677642?e=1782950400&v=beta&t=464zKWqFyQrSsJDAqgKhZm6kic4lQphNDKJG2fHUxx4'
   },
